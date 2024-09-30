@@ -183,7 +183,7 @@ const createPrimaryInfoDiv = () => {
   primaryInfoDiv.style.backgroundColor = 'rgba(240, 240, 240, 0.9)';
   primaryInfoDiv.style.padding = '10px 20px';
   primaryInfoDiv.style.display = 'flex';
-  primaryInfoDiv.style.justifyContent = 'space-between';
+  primaryInfoDiv.style.justifyContent = 'space-around'; // Change to space-around for better spacing
   primaryInfoDiv.style.alignItems = 'center';
   primaryInfoDiv.style.zIndex = '10';
   primaryInfoDiv.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
@@ -200,10 +200,12 @@ const createPrimaryInfoDiv = () => {
     return element;
   };
 
+  // Create info elements
   const portNumberElement = createInfoElement('info-portnumber', 'Port Number: Click a packet to view');
   const protocolElement = createInfoElement('info-protocol', 'Protocol: Click a packet to view');
   const certificatesElement = createInfoElement('info-certificates', 'Certificates: Click a packet to view');
 
+  // Append elements
   primaryInfoDiv.appendChild(portNumberElement);
   primaryInfoDiv.appendChild(protocolElement);
   primaryInfoDiv.appendChild(certificatesElement);
