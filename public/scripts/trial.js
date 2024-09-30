@@ -177,7 +177,7 @@ const createPrimaryInfoDiv = () => {
   primaryInfoDiv.id = 'primary-info';
   primaryInfoDiv.style.position = 'absolute';
   primaryInfoDiv.style.top = '0';
-  primaryInfoDiv.style.left = '20';
+  primaryInfoDiv.style.left = '200';
   primaryInfoDiv.style.right = '0';
   primaryInfoDiv.style.height = '60px';
   primaryInfoDiv.style.backgroundColor = 'rgba(240, 240, 240, 0.9)';
