@@ -119,7 +119,7 @@ const updateConnectionInfo = (info) => {
   document.getElementById('info-country').textContent = `Country: ${info.country}`;
   document.getElementById('info-checksum').textContent = `Checksum: ${info.checkSum}`;
   document.getElementById('info-time').textContent = `Connection Time: ${info.time}`;
-  document.getElementById('info-classification').textContent = `Classification: ${info.classification}`;
+  document.getElementById('info-classification').textContent = `: ${info.classification}`;
   document.getElementById('advice').textContent = `Recommendation: ${info.recommendation}`;
 
   // Remove any blur effect if it was applied
