@@ -34,16 +34,17 @@
                 object-fit: contain;
             }
             #primary-info {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background-color: rgba(240, 240, 240, 0.9);
-                padding: 10px;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-            }
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(240, 240, 240, 0.9);
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 10;
+    }
             #primary-info h4 {
                 margin: 0;
                 font-weight: bold;
@@ -116,14 +117,14 @@
 
         <!-- Middle Panel -->
         <div id="game-container">
-            <section id="game">
-                <img draggable="false" src="../public/assets/radarLines.png">
-            </section>
             <div id="primary-info">
                 <h4 id="info-portnumber">Port Number: Unavailable</h4>
                 <h4 id="info-protocol">Protocol: Unavailable</h4>
                 <h4 id="info-certificates">Certificates: Unavailable</h4>
             </div>
+            <section id="game">
+                <img draggable="false" src="../public/assets/radarLines.png">
+            </section>
         </div>
 
         <!-- Right Panel (Recommendations) -->

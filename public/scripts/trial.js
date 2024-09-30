@@ -176,7 +176,7 @@ const createPrimaryInfoDiv = () => {
   const primaryInfoDiv = document.createElement('div');
   primaryInfoDiv.id = 'primary-info';
   primaryInfoDiv.style.position = 'absolute';
-  primaryInfoDiv.style.bottom = '0';
+  primaryInfoDiv.style.top = '0';
   primaryInfoDiv.style.left = '0';
   primaryInfoDiv.style.right = '0';
   primaryInfoDiv.style.backgroundColor = 'rgba(240, 240, 240, 0.9)';
@@ -184,6 +184,7 @@ const createPrimaryInfoDiv = () => {
   primaryInfoDiv.style.display = 'flex';
   primaryInfoDiv.style.justifyContent = 'space-around';
   primaryInfoDiv.style.alignItems = 'center';
+  primaryInfoDiv.style.zIndex = '10';
 
   const portNumberElement = document.createElement('h4');
   portNumberElement.id = 'info-portnumber';
@@ -208,20 +209,19 @@ const createPrimaryInfoDiv = () => {
 const startTrial = () => {
   const gameContainer = document.getElementById("game-container");
   
-  // Remove existing primary info div if it exists
   const existingPrimaryInfo = document.getElementById('primary-info');
   if (existingPrimaryInfo) {
     existingPrimaryInfo.remove();
   }
   
+  // Create and add the primary info div
+  const primaryInfoDiv = createPrimaryInfoDiv();
+  gameContainer.insertBefore(primaryInfoDiv, gameContainer.firstChild);
+
   // Create and add the central point without click events
   const visualCenterDot = document.createElement('div');
   visualCenterDot.classList.add('center-dot');
   gameObj.appendChild(visualCenterDot);
-
-  // Create and add the primary info div
-  const primaryInfoDiv = createPrimaryInfoDiv();
-  gameContainer.appendChild(primaryInfoDiv);
 
   animatePackets();
 };
