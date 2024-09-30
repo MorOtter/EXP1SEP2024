@@ -17,34 +17,40 @@
                 height: calc(100vh - 60px); /* Adjust based on your navbar height */
             }
             #game-container {
-                position: relative;
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            #game {
-                flex-grow: 1;
-                width: 100%;
-                position: relative;
-            }
-            #game img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-            }
-            #primary-info {
+        position: relative;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px; /* Add padding to make room for the info bar */
+    }
+    #game {
+        flex-grow: 1;
+        width: 100%;
+        position: relative;
+        height: calc(100% - 40px); /* Subtract the height of the info bar */
+    }
+    #primary-info {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
+        height: 40px; /* Set a fixed height */
         background-color: rgba(240, 240, 240, 0.9);
-        padding: 10px;
+        padding: 5px 10px;
         display: flex;
         justify-content: space-around;
         align-items: center;
         z-index: 10;
     }
+
+    
+            #game img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+    
             #primary-info h4 {
                 margin: 0;
                 font-weight: bold;
