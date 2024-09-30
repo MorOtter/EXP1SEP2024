@@ -177,7 +177,7 @@ const createPrimaryInfoDiv = () => {
   primaryInfoDiv.id = 'primary-info';
   primaryInfoDiv.style.position = 'absolute';
   primaryInfoDiv.style.top = '0';
-  primaryInfoDiv.style.left = '200';
+  primaryInfoDiv.style.left = '0';
   primaryInfoDiv.style.right = '0';
   primaryInfoDiv.style.height = '60px';
   primaryInfoDiv.style.backgroundColor = 'rgba(240, 240, 240, 0.9)';
@@ -217,15 +217,14 @@ const createPrimaryInfoDiv = () => {
 const startTrial = () => {
   const gameContainer = document.getElementById("game-container");
   
-  // Remove existing primary info div if it exists
-  const existingPrimaryInfo = document.getElementById('primary-info');
-  if (existingPrimaryInfo) {
-    existingPrimaryInfo.remove();
-  }
+  // Check if primary info div already exists
+  let primaryInfoDiv = document.getElementById('primary-info');
   
-  // Create and add the primary info div
-  const primaryInfoDiv = createPrimaryInfoDiv();
-  gameContainer.insertBefore(primaryInfoDiv, gameContainer.firstChild);
+  if (!primaryInfoDiv) {
+    // Create and add the primary info div only if it doesn't exist
+    primaryInfoDiv = createPrimaryInfoDiv();
+    gameContainer.insertBefore(primaryInfoDiv, gameContainer.firstChild);
+  }
 
   // Adjust the game area
   const gameArea = document.getElementById("game");
