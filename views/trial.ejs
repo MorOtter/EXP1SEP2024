@@ -17,19 +17,19 @@
                 height: calc(100vh - 60px); /* Adjust based on your navbar height */
             }
             #game-container {
-        position: relative;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 40px; /* Add padding to make room for the info bar */
-    }
-    #game {
-        flex-grow: 1;
-        width: 100%;
-        position: relative;
-        height: calc(100% - 40px); /* Subtract the height of the info bar */
-    }
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    height: 100vh;          /* Full viewport height */
+    flex-direction: column;  /* Align children in a column */
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure full width */
+    position: relative;
+}
     #primary-info {
         position: absolute;
         top: 0;
