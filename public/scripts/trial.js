@@ -176,7 +176,7 @@ const createPrimaryInfoDiv = () => {
   const primaryInfoDiv = document.createElement('div');
   primaryInfoDiv.id = 'primary-info';
   primaryInfoDiv.style.position = 'absolute';
-  primaryInfoDiv.style.bottom = '0';
+  primaryInfoDiv.style.top = '0';  // Changed from 'bottom: 0' to 'top: 0'
   primaryInfoDiv.style.left = '0';
   primaryInfoDiv.style.right = '0';
   primaryInfoDiv.style.backgroundColor = 'rgba(240, 240, 240, 0.9)';
@@ -184,6 +184,7 @@ const createPrimaryInfoDiv = () => {
   primaryInfoDiv.style.display = 'flex';
   primaryInfoDiv.style.justifyContent = 'space-around';
   primaryInfoDiv.style.alignItems = 'center';
+  primaryInfoDiv.style.zIndex = '10';  // Ensure it's above other elements
 
   const portNumberElement = document.createElement('h4');
   portNumberElement.id = 'info-portnumber';
@@ -221,7 +222,7 @@ const startTrial = () => {
 
   // Create and add the primary info div
   const primaryInfoDiv = createPrimaryInfoDiv();
-  gameContainer.appendChild(primaryInfoDiv);
+  gameContainer.insertBefore(primaryInfoDiv, gameContainer.firstChild);  // Insert at the top
 
   animatePackets();
 };
