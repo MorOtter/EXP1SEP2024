@@ -52,7 +52,7 @@ export const confirmClassification = (dotElement, selectedDotInfo, classificatio
     }
 
     // Update the classification field in the connection information panel
-    document.getElementById('info-classification').textContent = `Classification: ${selectedClassification}`;
+    document.getElementById('info-classification').textContent = `${selectedClassification}`;
     
     // update packet data
     selectedDotInfo.classification = selectedClassification;
