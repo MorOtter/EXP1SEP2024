@@ -189,6 +189,10 @@ const createPrimaryInfoDiv = () => {
   primaryInfoDiv.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
   primaryInfoDiv.style.borderRadius = '5px';
 
+  primaryInfoDiv.style.width = '90%'; // Adjust this value to amend width of top bar
+  primaryInfoDiv.style.left = '50%';
+  primaryInfoDiv.style.transform = 'translateX(-50%)';
+
   const createInfoElement = (id, placeholder) => {
     const element = document.createElement('div');
     element.id = id;
