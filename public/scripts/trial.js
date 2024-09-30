@@ -40,14 +40,14 @@ while (count < numberWrong) {
   let index = Math.floor(Math.random() * advisorArray.length);
   if (advisorArray[index] === packetArray[index].packetType) {
     switch (advisorArray[index]) {
-      case "Hostile":
-        advisorArray[index] = Math.random() < .50 ? "Trusted" : "Suspect";
+      case "hostile":
+        advisorArray[index] = Math.random() < .50 ? "trusted" : "suspect";
         break;
-      case "Trusted":
+      case "trusted":
         advisorArray[index] = Math.random() < .50 ? "Suspect" : "Hostile";
         break;
-      case "Suspect":
-        advisorArray[index] = Math.random() < .50 ? "Hostile" : "Trusted";
+      case "suspect":
+        advisorArray[index] = Math.random() < .50 ? "hostile" : "trusted";
     }
     count++;
   }
@@ -93,9 +93,9 @@ if (conditionText === "No Advisor") {
 initializeClassificationButtons();
 
 // Attach confirmation event
-document.getElementById("Trusted").addEventListener("click", () => confirmClassification(dotElement, selectedDotInfo, "Trusted"));
-document.getElementById("Suspect").addEventListener("click", () => confirmClassification(dotElement, selectedDotInfo, "Suspect"));
-document.getElementById("Hostile").addEventListener("click", () => confirmClassification(dotElement, selectedDotInfo, "Hostile"));
+document.getElementById("trusted").addEventListener("click", () => confirmClassification(dotElement, selectedDotInfo, "Trusted"));
+document.getElementById("suspect").addEventListener("click", () => confirmClassification(dotElement, selectedDotInfo, "Suspect"));
+document.getElementById("hostile").addEventListener("click", () => confirmClassification(dotElement, selectedDotInfo, "Hostile"));
 
 let selectedDot = null;
 
