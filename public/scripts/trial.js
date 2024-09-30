@@ -179,26 +179,30 @@ const createPrimaryInfoDiv = () => {
   primaryInfoDiv.style.top = '0';
   primaryInfoDiv.style.left = '0';
   primaryInfoDiv.style.right = '0';
-  primaryInfoDiv.style.height = '40px';
+  primaryInfoDiv.style.height = '60px';
   primaryInfoDiv.style.backgroundColor = 'rgba(240, 240, 240, 0.9)';
-  primaryInfoDiv.style.padding = '5px 10px';
+  primaryInfoDiv.style.padding = '10px 20px';
   primaryInfoDiv.style.display = 'flex';
-  primaryInfoDiv.style.justifyContent = 'space-around';
+  primaryInfoDiv.style.justifyContent = 'space-between';
   primaryInfoDiv.style.alignItems = 'center';
   primaryInfoDiv.style.zIndex = '10';
+  primaryInfoDiv.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+  primaryInfoDiv.style.borderRadius = '5px';
 
- 
-  const portNumberElement = document.createElement('h4');
-  portNumberElement.id = 'info-portnumber';
-  portNumberElement.textContent = 'Port Number: Click a packet to view';
+  const createInfoElement = (id, placeholder) => {
+    const element = document.createElement('div');
+    element.id = id;
+    element.textContent = placeholder;
+    element.style.flex = '1';
+    element.style.textAlign = 'center';
+    element.style.fontSize = '16px';
+    element.style.fontWeight = '600';
+    return element;
+  };
 
-  const protocolElement = document.createElement('h4');
-  protocolElement.id = 'info-protocol';
-  protocolElement.textContent = 'Protocol: Click a packet to view';
-
-  const certificatesElement = document.createElement('h4');
-  certificatesElement.id = 'info-certificates';
-  certificatesElement.textContent = 'Certificates: Click a packet to view';
+  const portNumberElement = createInfoElement('info-portnumber', 'Port Number: Click a packet to view');
+  const protocolElement = createInfoElement('info-protocol', 'Protocol: Click a packet to view');
+  const certificatesElement = createInfoElement('info-certificates', 'Certificates: Click a packet to view');
 
   primaryInfoDiv.appendChild(portNumberElement);
   primaryInfoDiv.appendChild(protocolElement);
