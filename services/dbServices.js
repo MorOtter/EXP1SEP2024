@@ -11,25 +11,14 @@ const {Pool} = require('pg');
 
 const getLastTrialId = 
 async () => {
-    const client =
-await pool.connect();
-
+    const client = await pool.connect();
     try {
-
-        const query =
-"SELECT MAX(trial_id) AS max_id FROM trials;"
-
-        const result =
-await client.query(query);
-
+        const query = "SELECT MAX(trial_id) AS max_id FROM trials;"
+        const result = await client.query(query);
         const maxId = result.rows[0].max_id;
-
         return maxId;
-
     } finally {
-
         client.release();
-
     }
 
 }
@@ -46,12 +35,12 @@ pool.connect()
     .catch(err => console.error("Connection error", err.stack));
 
 
-const insertParticipant = async (username, condition, groupName, censoredInfo) => {
+const insertParticipant = async (username, condition, groupName, censoredInfo, gender, age) => {
     const client = await pool.connect();
     try {
-        const query = 'INSERT INTO participants (condition, group_name, censorship_group, experiment_start_time) VALUES ($1, $2, $3, $4) RETURNING participant_id;';
+        const query = 'INSERT INTO participants (condition, group_name, censorship_group, experiment_start_time, gender, age) VALUES ($1, $2, $3, $4, $5, $6) RETURNING participant_id;';
         const time = new Date().toISOString();
-        const values = [condition, groupName, censoredInfo, time];
+        const values = [condition, groupName, censoredInfo, time, gender, age];
         const result = await client.query(query, values);
     } finally {
         client.release();
