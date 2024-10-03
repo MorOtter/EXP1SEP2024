@@ -43,7 +43,10 @@ exports.setUpParticipant = async (req, res) => {
     req.session.trialNumber = 0;
     req.session.getScales = false;
 
-    await req.dbServices.insertParticipant(participantId, condition, groupName, censorGroup, censoredArrayNumber);
+    const gender = req.body.gender;
+    const age = parseInt(req.body.age, 10);
+
+    await req.dbServices.insertParticipant(participantId, condition, groupName, censorGroup, censoredArrayNumber, gender, age);
 
     res.redirect('/information/description');
 };
