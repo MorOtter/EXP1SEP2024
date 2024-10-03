@@ -39,20 +39,45 @@ exports.stopTrial = async (req, res, next) => {
     try {
         const trialEndTime = req.body["trialEndTime"];
         const trialType = req.session.trialNumber === 0 ? 'test' : 'main';
-        const trialId = await req.dbServices.insertTrial(req.session.participantId, trialType, req.session.trialNumber, req.session.trialStartTime, trialEndTime);
-        req.session.trialNumber++;
+        
+        // Send an immediate response to prevent timeout
+        res.status(202).json({ message: 'Data received, processing started' });
 
-        for (let input of req.body["input"]) {
-            input['time'] = input['time'] ? input['time'] : new Date().toISOString();
-            await req.dbServices.insertPacket(trialId, input.user, input.advisor, input.accepted, input.time);
-        }
-        res.status(200).json({ message: 'Regular data received successfully' });
+        // Perform database operations asynchronously
+        (async () => {
+            try {
+                const trialId = await req.dbServices.insertTrial(
+                    req.session.participantId, 
+                    trialType, 
+                    req.session.trialNumber, 
+                    req.session.trialStartTime, 
+                    trialEndTime
+                );
+                req.session.trialNumber++;
+
+                // Use Promise.all to insert all packets concurrently
+                await Promise.all(req.body["input"].map(input => {
+                    input['time'] = input['time'] ? input['time'] : new Date().toISOString();
+                    return req.dbServices.insertPacket(
+                        trialId, 
+                        input.user, 
+                        input.advisor, 
+                        input.accepted, 
+                        input.time
+                    );
+                }));
+
+                console.log('All data processed successfully');
+            } catch (err) {
+                console.error("Error in async processing:", err);
+            }
+        })();
 
     } catch (err) {
-        console.error("Error caught :",err);
+        console.error("Error in stopTrial:", err);
+        res.status(500).json({ error: 'An error occurred while processing trial data' });
     }
 }
-
 const zlib = require('zlib');
 
 
