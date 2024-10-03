@@ -299,9 +299,9 @@ const handleInput = async (data) => {
     }
 
     const result = await response.json();
-    console.log('Server response:', result);
+    console.log('Regular data response:', result);
 
-    // Proceed to next step immediately after receiving 202 response
+    // Call handleGazeData after the first request is completed
     await handleGazeData();
   } catch (err) {
     console.error('Error:', err);
