@@ -35,7 +35,7 @@ pool.connect()
     .catch(err => console.error("Connection error", err.stack));
 
 
-    const insertParticipant = async (username, condition, groupName, censoredInfo, sensoredarraynumber gender, age) => {
+const insertParticipant = async (username, condition, groupName, censoredInfo, gender, age) => {
     const client = await pool.connect();
     try {
         const query = 'INSERT INTO participants (condition, group_name, censorship_group, experiment_start_time, gender, age) VALUES ($1, $2, $3, $4, $5, $6) RETURNING participant_id;';
