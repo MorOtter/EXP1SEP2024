@@ -23,13 +23,11 @@ async () => {
 
 }
 
- const pool = new Pool({
+const pool = new Pool({
     connectionString: process.env.SUPABASE_DB_URL,
-     ssl:{
-         rejectUnauthorized: false
-     }
- });
-  
+    ssl: false // Disable SSL
+});
+ 
 pool.connect()
     .then(() => console.log('Connected to PostgreSQL'))
     .catch(err => console.error("Connection error", err.stack));

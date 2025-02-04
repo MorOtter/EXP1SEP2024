@@ -48,13 +48,11 @@ app.use((req, res, next) => {
 
 
 // Session Configuration
-app.use(
-    session({
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: false
-    })
-);
+app.use(session({
+  secret: process.env.SESSION_SECRET, // Environment variable
+  resave: false,
+  saveUninitialized: false // Changed from true to false
+}));
 
 // routes
 app.use('/participant', participantDetailsRoutes);
